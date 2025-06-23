@@ -34,7 +34,7 @@ pytest tests/
 
 For detailed guidance, explore the resources available in the `docs/` directory:
 
-- `installation.md` — Step-by-step instructions for setting up the environment, installing the package in editable or non-editable mode, and managing dependencies.
+- `installation.md` — Step-by-step instructions for setting up the environment, installing the package in editable or non-editable mode.
 - `api.md` — A complete reference of the public class interface, including parameters, attributes and methods.
 - `hands_on.ipynb` — A hands-on Jupyter notebook introducing the algorithm's core concepts, demonstrating best practices, and comparing results with alternative clustering algorithms.
 
