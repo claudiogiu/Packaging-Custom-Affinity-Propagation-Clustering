@@ -1,0 +1,25 @@
+[project]
+name = "affinityprop"
+version = "0.1.0"
+description = "Custom Implementation of the Affinity Propagation Clustering Algorithm"
+requires-python = ">=3.11.13"
+dependencies = [
+  "numpy ==2.3.1",
+  "scipy ==1.15.3",
+  "scikit-learn ==1.7.0"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["affinityprop"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra"
+testpaths = ["tests"]

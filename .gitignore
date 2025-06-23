@@ -1,0 +1,10 @@
+*.egg
+*.egg-info/
+.pytest_cache/
+__pycache__/
+*.log
+*.out
+*.err
+.ipynb_checkpoints/
+venv/
+env/
