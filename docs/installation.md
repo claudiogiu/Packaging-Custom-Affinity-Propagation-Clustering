@@ -11,7 +11,7 @@ conda create -n myenv python=3.11.13
 conda activate myenv
 ```
 
-**2.** **Install the Package in Editable Mode**
+**2.1.** **Install the Package in Editable Mode**
 
 If the package is under active development, it is recommended to install it in editable mode to enable immediate reflection of local source code modifications:
 
@@ -19,7 +19,7 @@ If the package is under active development, it is recommended to install it in e
 pip install -e .
 ```
 
-**2.** **Install the Package in Non-Editable Mode**
+**2.2.** **Install the Package in Non-Editable Mode**
 
 If no modifications to the source code are required and the package is intended for standard usage, install it in non-editable mode as follows:
 
