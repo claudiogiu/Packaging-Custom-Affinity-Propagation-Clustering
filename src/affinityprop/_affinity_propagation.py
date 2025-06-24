@@ -66,11 +66,11 @@ def _affinity_propagation(
     R = np.zeros((n, n), dtype=np.float64)
     A = np.zeros((n, n), dtype=np.float64)
 
-    # Step 2b:  Initialize variables to monitor label stability
+    # Step 2b: Initialize variables to monitor exemplar stability
     # ----------------------------------------------------------------
-    # Stores the previous label assignment and counts how many consecutive iterations the labels remain unchanged.
-    labels_old = np.full(n, -1)   
-    stable_iter = 0               
+    # Stores the previous exemplar set and counts how many consecutive iterations the exemplars remain unchanged.
+    exemplars_old = np.array([], dtype=int)
+    stable_iter = 0
 
     for it in range(max_iter):
         # Step 3: Compute combined messages (A + S)
@@ -82,7 +82,7 @@ def _affinity_propagation(
         max1 = np.max(AS, axis=1)
         idx1 = np.argmax(AS, axis=1)
 
-        #  Temporarily mask the top candidate to extract the second-best score
+        # Temporarily mask the top candidate to extract the second-best score
         AS[np.arange(n), idx1] = -np.inf
         max2 = np.max(AS, axis=1)
         AS[np.arange(n), idx1] = max1 
@@ -109,31 +109,29 @@ def _affinity_propagation(
         np.fill_diagonal(A_new, diag)
         A = damping * A + (1 - damping) * A_new
 
-        # Step 6: Check for convergence based on stability of labels
+        # Step 6a: Check for convergence based on stability of exemplars
         # ----------------------------------------------------------------
         # Implements the convergence criterion described in the original paper:
-        # labels must remain unchanged for 'convergence_iter' consecutive steps.
-        # If no exemplars are selected, label assignment is skipped for this iteration.
+        # local exemplar decisions must remain unchanged for 'convergence_iter' consecutive steps.
+        # If no exemplars are selected, convergence check is skipped for this iteration.
         E = np.diag(A + R) > 0
         exemplars = np.where(E)[0]
 
         if exemplars.size == 0:
             continue  # No exemplars this round: skip convergence check
 
-        labels = np.argmax(S[:, exemplars], axis=1)
-
-        if np.array_equal(labels, labels_old):
+        if np.array_equal(exemplars, exemplars_old):
             stable_iter += 1
             if verbose:
                 print(f"Iter {it+1:03d} | stable_iter = {stable_iter}")
             if stable_iter >= convergence_iter:
                 if verbose:
-                    print(f"Converged (labels stable) at iteration {it+1}")
+                    print(f"Converged (exemplars stable) at iteration {it+1}")
                 break
         else:
             stable_iter = 0
 
-        labels_old = labels.copy()
+        exemplars_old = exemplars.copy()
 
     else:
         # Step 6b: Raise warning if convergence criterion not met
