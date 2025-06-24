@@ -2,7 +2,7 @@
 
 ## Introduction  
 
-This repository is designed for a modular and customizable Python implementation of the Affinity Propagation clustering algorithm, originally introduced by FREY B.J., DUECK D. (2007) in their paper *"Clustering by Passing Messages Between Data Points"* (Science, Vol. 315, Issue 5814, pp. 972–976, [10.1126/science.1136800](https://doi.org/10.1126/science.1136800)).
+This repository is designed for a modular and customizable Python implementation of the Affinity Propagation clustering algorithm, originally introduced by FREY B.J., DUECK D. (2007) in their paper *"Clustering by Passing Messages Between Data Points"* (Science, Vol. 315, Issue 5814, pp. 972–976, DOI: [10.1126/science.1136800](https://doi.org/10.1126/science.1136800)).
 
 
 Affinity Propagation works by transmitting messages between data points based on pairwise similarities, allowing the algorithm to identify a set of representative exemplars without needing to pre-specify the number of clusters. 
