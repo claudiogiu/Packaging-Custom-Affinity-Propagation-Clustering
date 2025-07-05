@@ -21,7 +21,7 @@ AffinityPropagation(
   If `None`, the median of the similarity matrix is used.
 
 - `damping` (`float`, default: `0.9`)  
-  Damping factor to stabilize updates. Must lie in the interval `(0.5, 1)`.
+  Damping factor to stabilize updates. Must be in the interval `(0.5, 1)`.
 
 - `max_iter` (`int`, default: `200`)  
   Maximum number of iterations allowed for message passing.
@@ -35,7 +35,7 @@ AffinityPropagation(
 #### Attributes
 
 - `labels_` (`ndarray` of shape `(n_samples,)`)  
-  Cluster assignment for each input sample, assigned after fitting the model.
+  Cluster labels for each input sample, assigned after fitting the model.
 
 - `cluster_centers_indices_` (`ndarray` of `int`)  
   Indices of the identified exemplars, computed after fitting the model.
@@ -45,8 +45,8 @@ AffinityPropagation(
 
 - `fit(S)` → `AffinityPropagation`  
   Fits the model to a similarity matrix `S` using the Affinity Propagation algorithm.  
-  **Returns**: the fitted instance itself, with attributes `labels_` and `cluster_centers_indices_`.
+  Returns the fitted instance itself, with attributes `labels_` and `cluster_centers_indices_`.
 
 - `fit_predict(S)` → `np.ndarray`  
   Fits the model and directly returns the cluster labels.  
-  **Returns**: a 1D NumPy array of integer cluster assignments of shape `(n_samples,)`.
+  Returns a 1D NumPy array of integer cluster assignments of shape `(n_samples,)`.
